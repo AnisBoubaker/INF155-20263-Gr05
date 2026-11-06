@@ -5,6 +5,7 @@
 void tri_insertion(int tab[], int taille);
 void afficher_tab(int tab[], int taille);
 void tri_selection(int tab[], int taille);
+void tri_bulles(int tab[], int taille);
 
 int main(void) {
     int tab[] = {12, 23, 45, 67, 89, 120, 145, 178, 189, 202, 232};
@@ -12,6 +13,7 @@ int main(void) {
 
     int mon_tab[] = {56, 12, 34, 89, 120, 3, 156, 87, 220, 55, 12, 18};
     int mon_tab2[] = {56, 12, 34, 89, 120, 3, 156, 87, 220, 55, 12, 18};
+    int mon_tab3[] = {56, 12, 34, 89, 120, 3, 156, 87, 220, 55, 12, 18};
 
     printf("Tableau initial: ");
     afficher_tab(mon_tab, 12);
@@ -23,6 +25,10 @@ int main(void) {
     tri_selection(mon_tab2, 12);
     printf("Tri selection: ");
     afficher_tab(mon_tab2, 12);
+
+    tri_bulles(mon_tab3, 12);
+    printf("Tri selection: ");
+    afficher_tab(mon_tab3, 12);
 
     return 0;
 }
@@ -64,5 +70,20 @@ void tri_selection(int tab[], int taille) {
         if (indice_min!=i) {
             echanger_cases(tab, indice_min, i);
         }
+    }
+}
+
+void tri_bulles(int tab[], int taille) {
+    int limite = taille;
+    int permutation = 1;
+    while (limite>1 && permutation) {
+        permutation = 0;
+        for (int i=0; i< limite -1 ; i++) {
+            if (tab[i]>tab[i+1]) {
+                echanger_cases(tab, i, i+1);
+                permutation = 1;
+            }
+        }
+        limite--;
     }
 }
