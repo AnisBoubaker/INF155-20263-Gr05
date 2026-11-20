@@ -14,6 +14,7 @@ typedef struct etudiant {
 } Etudiant;
 
 void afficher_etudiant(const Etudiant *et);
+double calculer_moyenne(const Etudiant *et);
 
 int main(void) {
     Etudiant et1;
@@ -38,6 +39,8 @@ int main(void) {
     et2 = et1;
     afficher_etudiant(&et2);
 
+    printf("Moyenne de et1: %.2lf\n", calculer_moyenne(&et1));
+
     return 0;
 }
 
@@ -47,5 +50,20 @@ void afficher_etudiant(const Etudiant *et) {
     printf("Notes: TP1: %.2lf, TP2: %.2lf, INTRA: %.2lf, FINAL: %.2lf\n", et->tp1, et->tp2, et->intra, et->final);
     //Pas permis car le paramètre est constant
     //et->tp1 = 0 ;
+    printf("Moyenne: %.2lf\n", calculer_moyenne(et));
+}
 
+/*
+ * Écrire la fonction calculer_moyenne qui calcule la moyenne
+ * pondérée d'un-e étudiant-e. Déclarez les pondérations
+ * comme constantes dans la fonction
+ * (TP1: 0.15, TP2: 0.15, Intra: 0.3, Final: 0.4)
+ */
+double calculer_moyenne(const Etudiant *et) {
+    const double coef_tp1 = 0.15;
+    const double coef_tp2 = 0.15;
+    const double coef_intra = 0.3;
+    const double coef_final = 0.4;
+    return et->tp1*coef_tp1 + et->tp2*coef_tp2 +
+        et->intra * coef_intra + et->final * coef_final;
 }
