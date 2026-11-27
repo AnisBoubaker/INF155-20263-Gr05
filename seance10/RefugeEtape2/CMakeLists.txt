@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(RefugeEtape2 main.c
         animal.c
-        animal.h)
+        animal.h
+        refuge.c
+        refuge.h)
